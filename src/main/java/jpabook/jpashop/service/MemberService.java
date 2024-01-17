@@ -2,6 +2,7 @@ package jpabook.jpashop.service;
 
 import jpabook.jpashop.domain.Member;
 import jpabook.jpashop.repository.MemberRepository;
+import jpabook.jpashop.repository.MemberRepositoryOld;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,7 +14,8 @@ import java.util.List;
 //@AllArgsConstructor // 모든 필드를 이용해 생성자 생성
 @RequiredArgsConstructor // final 키워드가 있는 필드만 이용해 생성자 생성
 public class MemberService {
-    private final MemberRepository memberRepository; // 변경할 일이 없기 때문에 final 권장
+    private final MemberRepositoryOld memberRepositoryOld; // 변경할 일이 없기 때문에 final 권장
+    private final MemberRepository memberRepository;
 
     /*
     인젝션
@@ -57,12 +59,12 @@ public class MemberService {
 
     /** 회원 단건 조회 */
     public Member findOne(Long memberId) {
-        return memberRepository.findOne(memberId);
+        return memberRepository.findById(memberId).get();
     }
 
     @Transactional
     public void update(Long id, String name) {
-        Member member = memberRepository.findOne(id);
+        Member member = memberRepository.findById(id).get();
         member.setName(name);
     }
 }
