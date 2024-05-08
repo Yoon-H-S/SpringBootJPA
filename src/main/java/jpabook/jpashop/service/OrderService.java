@@ -19,6 +19,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 public class OrderService {
+    
     private final OrderRepository orderRepository;
     private final MemberRepositoryOld memberRepositoryOld;
     private final ItemRepository itemRepository;

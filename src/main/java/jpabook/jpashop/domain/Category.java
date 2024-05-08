@@ -1,6 +1,6 @@
 package jpabook.jpashop.domain;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import jpabook.jpashop.domain.item.Item;
 import lombok.Getter;
 import lombok.Setter;
@@ -8,7 +8,7 @@ import lombok.Setter;
 import java.util.ArrayList;
 import java.util.List;
 
-import static jakarta.persistence.FetchType.*;
+import static javax.persistence.FetchType.*;
 
 @Entity
 @Getter @Setter
